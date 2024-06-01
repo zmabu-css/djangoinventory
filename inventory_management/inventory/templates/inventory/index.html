@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Management</title>
+    <!-- Load static tag -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'index' %}">Inventory Management System</a>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'product-list' %}">View Products</a>
+            <a href="{% url 'category-list' %}">View Categories</a>
+        </nav>
+        <h1>Welcome to Inventory Management System</h1>
+        <a href="{% url 'product-list' %}" class="button">View Products</a>
+        <a href="{% url 'category-list' %}" class="button">View Categories</a>
+    </div>
+</body>
+</html>

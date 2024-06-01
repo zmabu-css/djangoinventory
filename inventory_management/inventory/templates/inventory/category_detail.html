@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ category.name }} - Products</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}">
+    <style>
+        .product-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #fff;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .product-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .product-name {
+            font-size: 20px;
+            margin: 0;
+        }
+        .product-price {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'index' %}">Inventory Management System</a>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'product-list' %}">View Products</a>
+            <a href="{% url 'category-list' %}">View Categories</a>
+        </nav>
+        <h1>{{ category.name }} - Products</h1>
+        <ul>
+        {% for product in products %}
+            <li class="product-item">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% endif %}
+                <div class="product-details">
+                    <a href="{% url 'product-detail' product.id %}" class="product-name">{{ product.name }}</a>
+                    <p class="product-price">${{ product.price }}</p>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'category-list' %}" class="button">Back to Categories</a>
+    </div>
+</body>
+</html>

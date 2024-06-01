@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category List</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inventory/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'index' %}">Inventory Management System</a>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'product-list' %}">View Products</a>
+            <a href="{% url 'category-list' %}">View Categories</a>
+        </nav>
+        <h1>Category List</h1>
+        <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'category-detail' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+        </ul>
+        <a href="{% url 'index' %}" class="button">Back to Home</a>
+    </div>
+</body>
+</html>
